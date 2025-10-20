@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Enfield Clone</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 15px 50px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      color: #e51c23;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar ul li {
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Slider */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+
+    .slides {
+      display: flex;
+      width: 400%;
+      height: 100%;
+      transition: transform 0.8s ease;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      background-size: contain;
+      background-position: left;
+      position: relative;
+    }
+
+    .slide2 {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      background-size: contain;
+      background-position: left;
+      position: relative;
+    }
+
+    .slide3 {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      background-size: contain;
+      background-position: left;
+      position: relative;
+    }
+
+    .slide4 {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      background-size: contain;
+      background-position: left;
+      position: relative;
+    }
+
+    .slide5 {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      background-size: contain;
+      background-position: left;
+      position: relative;
+    }
+
+    .slide6 {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      background-size: contain;
+      background-position: left;
+      position: relative;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Content inside slide */
+    .content {
+      position: absolute;
+      bottom: 100px;
+      left: 50px;
+      z-index: 10;
+    }
+       .content2 {
+      position: absolute;
+      bottom: 400px;
+      left: 50px;
+      color:black
+
+    }
+  
+    .content2 h1 {
+      font-size: 60px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+     .content2 p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .content h1 {
+      font-size: 60px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background: #fff;
+      color: #000;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    /* Navigation buttons */
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+
+    /* Dots */
+    .dots {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: gray;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: white;
+    }
+
+    .royal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f2f2f2;
+      margin: 0;
+    }
+
+    .viewer {
+      perspective: 1000px;
+      width: 600px;
+      height: 400px;
+      position: relative;
+    }
+.slide2 {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    background-size: contain;
+    background-position: left;
+    position: relative;
+}
+
+.slide3 {
+    width: 32%;
+    height: 100%;
+    flex-shrink: 0;
+    background-size: contain;
+    background-position: left;
+    position: relative;
+}
+
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation */
+    .top-menu {
+      background: #111;
+      padding: 15px;
+      position: relative;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .top-menu ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    .top-menu ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .top-menu ul li a:hover {
+      color: red;
+    }
+
+    /* Image Showcase */
+    .image-showcase {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      margin-top: 60px; /* Push down below navbar */
+      overflow: hidden;
+    }
+    .frame {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .frame.visible {
+      opacity: 1;
+    }
+
+    /* Caption Box */
+    .caption-box {
+      position: absolute;
+      top: 40%;
+      left: 10%;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 8px black;
+    }
+
+    /* Button */
+    .action-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .action-btn:hover {
+      background: red;
+      color: white;
+    }
+ .footer {
+      background-color: #1f2937; /* Dark navy background */
+      color: white;
+      padding: 40px 80px;
+      font-size: 14px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 30px;
+    }
+
+    .footer-column {
+      margin-right: 50px;
+    }
+
+    .footer-column h4 {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+      color: #d1d5db; /* Light gray text */
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+      color: #ffffff;
+    }
+
+    .footer-address {
+      max-width: 300px;
+      font-size: 14px;
+      line-height: 22px;
+      color: #d1d5db;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 15px;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+
+    .footer hr {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">ROYAL ENFIELD</div>
+    <ul>
+      <li>Motorcycles</li>
+      <li>Shop</li>
+      <li>Service</li>
+      <li>Rides</li>
+      <li>Our World</li>
+      <li>Support</li>
+      <li>Locate Us</li>
+      <li>Login</li>
+    </ul>
+  </div>
+uzvvsupgddvitk9alim4.webp
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slides" id="slides">
+      <div class="slide" style="background-image:url('art-of-motorcycling-home.webp');">
+        <div class="content">
+          <h1>GPR NIGHTS</h1>
+          <p>Get ready to prowl with the best. Drag & Drift Club, Stunt Show, Custom Motorcycles</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+     
+      <div class="slide2" style="background-image:url('Graphite_Grey_Banner_Desktop_1903x981.png');">
+        <div class="content">
+          <h1>EXPLORE MORE</h1>
+          <p>Ride with passion. Experience the thrill of Royal Enfield.</p>
+          <a href="#" class="btn">Discover</a>
+        </div>
+      </div>
+      
+      <div class="slide3"
+        style="background-image:url('guerrilla450guerrillarightfrontthreequarter.webp');">
+        <div class="content2">
+          <h1>GUERRILLA 450</h1>
+          <p>Take the roads less traveled with unmatched performance.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+      
+        <div class="slide4"
+        style="background-image:url('desktopBanner2 (1).jpg');">
+        <div class="content2">
+          <h1>GUERRILLA 450</h1>
+          <p>Take the roads less traveled with unmatched performance.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+   
+        <div class="slide4"
+        style="background-image:url('desktopBanner2 (1).jpg');">
+        <div class="content2">
+          <h1>GUERRILLA 450</h1>
+          <p>Take the roads less traveled with unmatched performance.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+  
+      <div class="slide5" style="background-image:url('banner.jpg');">
+        <div class="content">
+        </div>
+      </div>
+      <div class="slide6" style="background-image:url('factory-custom.avif');">
+        <div class="content">
+          <h1>COMMUNITY</h1>
+          <p>Join riders worldwide and be part of the Royal Enfield family.</p>
+          <a href="#" class="btn">Join Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+ <!-- Controls -->
+      <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+
+      <!-- Dots -->
+      <div class="dots" id="dots"></div>
+    </div>
+
+    <script>
+      let index = 0;
+      const slides = document.getElementById("slides");
+      const totalSlides = slides.children.length;
+      const dotsContainer = document.getElementById("dots");
+
+      // Create dots
+      for (let i = 0; i < totalSlides; i++) {
+        let dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+
+      const dots = document.querySelectorAll(".dot");
+
+      function showSlide() {
+        slides.style.transform = `translateX(${-index * 100}%)`;
+        dots.forEach(dot => dot.classList.remove("active"));
+        dots[index].classList.add("active");
+      }
+
+      function moveSlide(step) {
+        index = (index + step + totalSlides) % totalSlides;
+        showSlide();
+      }
+
+      function goToSlide(n) {
+        index = n;
+        showSlide();
+      }
+
+      // Auto slide
+      setInterval(() => {
+        moveSlide(1);
+      }, 5000);
+    </script>
+  </div>
+  </div>
+  <royal>
+      <div class="slider">
+  <div class="slides" id="slides">
+      <div class="slide2" style="background-image:url('gma-landing.avif');">
+        <div class="content">
+          <h1>GPR NIGHTS</h1>
+          <p>Get ready to prowl with the best. Drag & Drift Club, Stunt Show, Custom Motorcycles</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+        </div>
+          </div>
+            </div>
+<div class="slider">
+  <div class="slides" id="slides">
+      <div class="slide3" style="background-image:url('dealers-home-new.avif');">
+        <div class="content">
+          <h1>GPR NIGHTS</h1>
+          <p>Get ready to prowl with the best. Drag & Drift Club, Stunt Show, Custom Motorcycles</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+  </div>
+    </div>
+      </div>
+  <div class="slider">
+  <div class="slides" id="slides">
+      <div class="slide3" style="background-image:url('two-communities-one-vision-connecting-bikers-and-skaters-through-royal-enfield-and-urban-monkey-907685.webp');">
+        <div class="content">
+          <h1>GPR NIGHTS</h1>
+          <p>Get ready to prowl with the best. Drag & Drift Club, Stunt Show, Custom Motorcycles</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+  </div>
+    </div>
+ </div>
+  </div>
+    <!-- Top Menu -->
+  <nav class="top-menu">
+    <ul>
+      <li><a onclick="displaySlide(0)">Royal Enfield X UM</a></li>
+      <li><a onclick="displaySlide(1)">Royal Enfield X FARAK</a></li>
+      <li><a onclick="displaySlide(2)">Royal Enfield X DailyObjects</a></li>
+      <li><a onclick="displaySlide(3)">Shotgun 650</a></li>
+    </ul>
+  </nav>
+
+  <!-- Image Showcase -->
+  <div class="image-showcase">
+    <div class="frame visible" style="background-image: url('70197d223302873.67f668e12094f.webp');">
+      <div class="caption-box">
+        SHOTGUN 650 <br> Inspired by Custom. For Custom.
+        <br><button class="action-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="frame" style="background-image: url('guerrilla-450.jpg');">
+      <div class="caption-box">
+        Royal Enfield X UM <br> Ride with Passion.
+        <br><button class="action-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="frame" style="background-image: url('https://images.unsplash.com/photo-1580060839134-75a6f0d6c50a?auto=format&fit=crop&w=1200&q=80');">
+      <div class="caption-box">
+        Royal Enfield X FARAK <br> Power. Style. Strength.
+        <br><button class="action-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="frame" style="background-image: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80');">
+      <div class="caption-box">
+        Royal Enfield X DailyObjects <br> Gear Up Now!
+        <br><button class="action-btn">Shop Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let frames = document.querySelectorAll('.frame');
+
+    function displaySlide(index) {
+      frames.forEach((frame, i) => {
+        frame.classList.remove('visible');
+        if (i === index) {
+          frame.classList.add('visible');
+        }
+      });
+    }
+  </script>
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- About -->
+      <div class="footer-column">
+        <h4>ABOUT</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Flipkart Stories</a></li>
+        </ul>
+      </div>
+
+      <!-- Help -->
+      <div class="footer-column">
+        <h4>HELP</h4>
+        <ul>
+          <li><a href="#">Payments</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Cancellation & Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Consumer Policy -->
+      <div class="footer-column">
+        <h4>CONSUMER POLICY</h4>
+        <ul>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Terms Of Use</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div class="footer-column">
+        <h4>SOCIAL</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+
+      <!-- Address -->
+      <div class="footer-column footer-address">
+        <h4>Mail Us:</h4>
+        Flipkart Internet Private Limited,<br>
+        Buildings Alyssa, Begonia & Clove Embassy Tech Village,<br>
+        Outer Ring Road, Devarabeesanahalli Village,<br>
+        Bengaluru, 560103,<br>
+        Karnataka, India
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2007-2023 Flipkart.com
+    </div>
+  </footer>
+
+</body>
+</html>
